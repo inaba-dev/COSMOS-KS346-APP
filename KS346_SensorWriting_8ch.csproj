@@ -56,9 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassCom.cs" />
-    <Compile Include="Command\Control_AlarmParam.cs" />
-    <Compile Include="Command\Control_GasAdjust.cs" />
-    <Compile Include="Command\Control_Reset.cs" />
+    <Compile Include="Command\Control_NdirSpanAdjust.cs" />
+    <Compile Include="Command\Control_NdirZeroAdjust.cs" />
+    <Compile Include="Command\Control_NdirSensorParam.cs" />
+    <Compile Include="Command\Control_NdirSensorStatus.cs" />
     <Compile Include="Command\Control_Version.cs" />
     <Compile Include="Command\Control_GasParam.cs" />
     <Compile Include="Command\Control_SensorUseTime.cs" />

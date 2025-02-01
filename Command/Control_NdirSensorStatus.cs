@@ -11,16 +11,16 @@ namespace APP
     /// 
     /// </summary>
 
-    public class ClassReset
+    public class ClassNdirSensorStatus
     {
-        public byte 処理結果;
+
     }
 
     /// <summary>
     /// 
     /// </summary>
 
-    public class Control_Reset
+    public class Control_NdirSensorStatus
     {
         /// <summary>
         /// ログ出力変換
@@ -30,12 +30,6 @@ namespace APP
         {
             List<string> sensordata = new List<string>();
 
-            /// 受信データ解析
-            ClassReset param = Parse(datas);
-
-            string msg = "処理結果：" + (param.処理結果 == 0x00 ? "OK" : "NG");
-            sensordata.Add(msg);
-
             return sensordata;
         }
 
@@ -43,15 +37,24 @@ namespace APP
         /// 受信データ解析
         /// </summary>
 
-        public ClassReset Parse(List<byte> datas)
+        public ClassNdirSensorStatus Parse(List<byte> datas)
         {
-            if (datas == null || datas.Count < 5) return null;
+            if (datas == null || datas.Count < 35) return null;
 
-            ClassReset param = new ClassReset();
-
-            param.処理結果 = datas[5];
+            ClassNdirSensorStatus param = new ClassNdirSensorStatus();
 
             return param;
+        }
+
+        /// <summary>
+        /// 送信データ生成
+        /// </summary>
+
+        public List<byte> CreatePacket(ClassNdirSensorStatus param)
+        {
+            List<byte> sendlist = new List<byte>();
+
+            return sendlist;
         }
     }
 }
