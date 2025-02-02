@@ -32,10 +32,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonSet_製造番号 = new System.Windows.Forms.Button();
-            this.buttonGet_製造番号 = new System.Windows.Forms.Button();
-            this.textR_製造番号 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.numericW_B3 = new System.Windows.Forms.NumericUpDown();
             this.numericW_B0 = new System.Windows.Forms.NumericUpDown();
             this.buttonSet_B3 = new System.Windows.Forms.Button();
@@ -67,9 +63,10 @@
             this.textAlarm = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textError = new System.Windows.Forms.TextBox();
+            this.textGas = new System.Windows.Forms.TextBox();
+            this.textVer = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
-            this.textW_製造番号 = new APP.TextBoxNumberEx();
             this.buttonGet_B4 = new System.Windows.Forms.Button();
             this.textR_B4 = new System.Windows.Forms.TextBox();
             this.buttonGet_B5 = new System.Windows.Forms.Button();
@@ -92,8 +89,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.checkValid = new System.Windows.Forms.CheckBox();
-            this.textGas = new System.Windows.Forms.TextBox();
-            this.textVer = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textSerial = new System.Windows.Forms.TextBox();
+            this.buttonSerial = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericW_B3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericW_B0)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -121,7 +119,7 @@
             // label17
             // 
             this.label17.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label17.Location = new System.Drawing.Point(3, 52);
+            this.label17.Location = new System.Drawing.Point(3, 47);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(52, 20);
             this.label17.TabIndex = 280;
@@ -147,54 +145,6 @@
             this.label1.Size = new System.Drawing.Size(52, 17);
             this.label1.TabIndex = 304;
             this.label1.Text = "書込み値";
-            // 
-            // buttonSet_製造番号
-            // 
-            this.buttonSet_製造番号.BackColor = System.Drawing.Color.Teal;
-            this.buttonSet_製造番号.Font = new System.Drawing.Font("メイリオ", 8F);
-            this.buttonSet_製造番号.ForeColor = System.Drawing.Color.White;
-            this.buttonSet_製造番号.Location = new System.Drawing.Point(271, 215);
-            this.buttonSet_製造番号.Name = "buttonSet_製造番号";
-            this.buttonSet_製造番号.Size = new System.Drawing.Size(36, 24);
-            this.buttonSet_製造番号.TabIndex = 303;
-            this.buttonSet_製造番号.Text = "W";
-            this.buttonSet_製造番号.UseVisualStyleBackColor = false;
-            this.buttonSet_製造番号.Click += new System.EventHandler(this.buttonSet_製造番号_Click);
-            // 
-            // buttonGet_製造番号
-            // 
-            this.buttonGet_製造番号.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.buttonGet_製造番号.Font = new System.Drawing.Font("メイリオ", 8F);
-            this.buttonGet_製造番号.ForeColor = System.Drawing.Color.White;
-            this.buttonGet_製造番号.Location = new System.Drawing.Point(309, 215);
-            this.buttonGet_製造番号.Name = "buttonGet_製造番号";
-            this.buttonGet_製造番号.Size = new System.Drawing.Size(36, 24);
-            this.buttonGet_製造番号.TabIndex = 302;
-            this.buttonGet_製造番号.Text = "R";
-            this.buttonGet_製造番号.UseVisualStyleBackColor = false;
-            this.buttonGet_製造番号.Click += new System.EventHandler(this.buttonGet_製造番号_Click);
-            // 
-            // textR_製造番号
-            // 
-            this.textR_製造番号.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textR_製造番号.Font = new System.Drawing.Font("MS UI Gothic", 10F);
-            this.textR_製造番号.Location = new System.Drawing.Point(195, 216);
-            this.textR_製造番号.Name = "textR_製造番号";
-            this.textR_製造番号.ReadOnly = true;
-            this.textR_製造番号.Size = new System.Drawing.Size(70, 21);
-            this.textR_製造番号.TabIndex = 301;
-            this.textR_製造番号.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label8.Location = new System.Drawing.Point(12, 214);
-            this.label8.Margin = new System.Windows.Forms.Padding(0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 24);
-            this.label8.TabIndex = 300;
-            this.label8.Text = "製造番号";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // numericW_B3
             // 
@@ -330,7 +280,7 @@
             // 
             this.buttonGas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonGas.Font = new System.Drawing.Font("メイリオ", 8F);
-            this.buttonGas.Location = new System.Drawing.Point(142, 50);
+            this.buttonGas.Location = new System.Drawing.Point(142, 45);
             this.buttonGas.Margin = new System.Windows.Forms.Padding(0);
             this.buttonGas.Name = "buttonGas";
             this.buttonGas.Size = new System.Drawing.Size(40, 24);
@@ -384,6 +334,9 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.buttonSerial);
+            this.tabPage1.Controls.Add(this.textSerial);
+            this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.panel4);
             this.tabPage1.Controls.Add(this.panel3);
             this.tabPage1.Controls.Add(this.panel1);
@@ -581,11 +534,38 @@
             this.textError.TabIndex = 313;
             this.textError.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // textGas
+            // 
+            this.textGas.BackColor = System.Drawing.SystemColors.Control;
+            this.textGas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textGas.Font = new System.Drawing.Font("MS UI Gothic", 9F);
+            this.textGas.ForeColor = System.Drawing.Color.Black;
+            this.textGas.Location = new System.Drawing.Point(54, 48);
+            this.textGas.Margin = new System.Windows.Forms.Padding(0);
+            this.textGas.Name = "textGas";
+            this.textGas.ReadOnly = true;
+            this.textGas.Size = new System.Drawing.Size(85, 19);
+            this.textGas.TabIndex = 281;
+            this.textGas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textVer
+            // 
+            this.textVer.BackColor = System.Drawing.SystemColors.Control;
+            this.textVer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textVer.Font = new System.Drawing.Font("MS UI Gothic", 9F);
+            this.textVer.ForeColor = System.Drawing.Color.Black;
+            this.textVer.Location = new System.Drawing.Point(54, 21);
+            this.textVer.Margin = new System.Windows.Forms.Padding(0);
+            this.textVer.Name = "textVer";
+            this.textVer.ReadOnly = true;
+            this.textVer.Size = new System.Drawing.Size(85, 19);
+            this.textVer.TabIndex = 279;
+            this.textVer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
             this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.textW_製造番号);
             this.tabPage2.Controls.Add(this.buttonGet_B4);
             this.tabPage2.Controls.Add(this.textR_B4);
             this.tabPage2.Controls.Add(this.buttonGet_B5);
@@ -612,16 +592,12 @@
             this.tabPage2.Controls.Add(this.numericW_B0);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.numericW_B3);
-            this.tabPage2.Controls.Add(this.buttonSet_製造番号);
-            this.tabPage2.Controls.Add(this.buttonGet_製造番号);
-            this.tabPage2.Controls.Add(this.textR_製造番号);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -639,16 +615,6 @@
             this.label18.Size = new System.Drawing.Size(76, 17);
             this.label18.TabIndex = 338;
             this.label18.Text = "(単位：ppm)";
-            // 
-            // textW_製造番号
-            // 
-            this.textW_製造番号.Font = new System.Drawing.Font("MS UI Gothic", 10F);
-            this.textW_製造番号.Location = new System.Drawing.Point(118, 216);
-            this.textW_製造番号.MaxLength = 8;
-            this.textW_製造番号.Name = "textW_製造番号";
-            this.textW_製造番号.Size = new System.Drawing.Size(70, 21);
-            this.textW_製造番号.TabIndex = 337;
-            this.textW_製造番号.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonGet_B4
             // 
@@ -932,33 +898,43 @@
             this.checkValid.UseVisualStyleBackColor = false;
             this.checkValid.CheckedChanged += new System.EventHandler(this.valid_CheckedChanged);
             // 
-            // textGas
+            // label8
             // 
-            this.textGas.BackColor = System.Drawing.SystemColors.Control;
-            this.textGas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textGas.Font = new System.Drawing.Font("MS UI Gothic", 9F);
-            this.textGas.ForeColor = System.Drawing.Color.Black;
-            this.textGas.Location = new System.Drawing.Point(54, 53);
-            this.textGas.Margin = new System.Windows.Forms.Padding(0);
-            this.textGas.Name = "textGas";
-            this.textGas.ReadOnly = true;
-            this.textGas.Size = new System.Drawing.Size(85, 19);
-            this.textGas.TabIndex = 281;
-            this.textGas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label8.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label8.Location = new System.Drawing.Point(4, 73);
+            this.label8.Margin = new System.Windows.Forms.Padding(0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 24);
+            this.label8.TabIndex = 319;
+            this.label8.Text = "製造番号";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textVer
+            // textSerial
             // 
-            this.textVer.BackColor = System.Drawing.SystemColors.Control;
-            this.textVer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textVer.Font = new System.Drawing.Font("MS UI Gothic", 9F);
-            this.textVer.ForeColor = System.Drawing.Color.Black;
-            this.textVer.Location = new System.Drawing.Point(54, 21);
-            this.textVer.Margin = new System.Windows.Forms.Padding(0);
-            this.textVer.Name = "textVer";
-            this.textVer.ReadOnly = true;
-            this.textVer.Size = new System.Drawing.Size(85, 19);
-            this.textVer.TabIndex = 279;
-            this.textVer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textSerial.BackColor = System.Drawing.SystemColors.Control;
+            this.textSerial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textSerial.Font = new System.Drawing.Font("MS UI Gothic", 9F);
+            this.textSerial.ForeColor = System.Drawing.Color.Black;
+            this.textSerial.Location = new System.Drawing.Point(54, 75);
+            this.textSerial.Margin = new System.Windows.Forms.Padding(0);
+            this.textSerial.Name = "textSerial";
+            this.textSerial.ReadOnly = true;
+            this.textSerial.Size = new System.Drawing.Size(85, 19);
+            this.textSerial.TabIndex = 321;
+            this.textSerial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonSerial
+            // 
+            this.buttonSerial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonSerial.Font = new System.Drawing.Font("メイリオ", 8F);
+            this.buttonSerial.Location = new System.Drawing.Point(142, 73);
+            this.buttonSerial.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSerial.Name = "buttonSerial";
+            this.buttonSerial.Size = new System.Drawing.Size(40, 24);
+            this.buttonSerial.TabIndex = 322;
+            this.buttonSerial.Text = "読出";
+            this.buttonSerial.UseVisualStyleBackColor = false;
+            this.buttonSerial.Click += new System.EventHandler(this.buttonSerial_Click);
             // 
             // UserControlDevice
             // 
@@ -994,10 +970,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonSet_製造番号;
-        private System.Windows.Forms.Button buttonGet_製造番号;
-        private System.Windows.Forms.TextBox textR_製造番号;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numericW_B3;
         private System.Windows.Forms.NumericUpDown numericW_B0;
         private System.Windows.Forms.Button buttonSet_B3;
@@ -1048,7 +1020,6 @@
         private System.Windows.Forms.Button buttonSet_B2;
         private System.Windows.Forms.NumericUpDown numericW_B1;
         private System.Windows.Forms.NumericUpDown numericW_B2;
-        private TextBoxNumberEx textW_製造番号;
         private System.Windows.Forms.CheckBox checkValid;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
@@ -1056,5 +1027,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textGas;
         private System.Windows.Forms.TextBox textVer;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button buttonSerial;
+        private System.Windows.Forms.TextBox textSerial;
     }
 }

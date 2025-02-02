@@ -71,11 +71,11 @@ namespace APP
         /// 関数：2バイトを10進数に変換
         /// </summary>
 
-        public static uint combine_2byte(string data1, string data2)
+        public static UInt16 combine_2byte(byte data1, byte data2)
         {
             // 文字列を2進数に変換
-            string binaryStr1 = Convert.ToString(int.Parse(data1), 2);
-            string binaryStr2 = Convert.ToString(int.Parse(data2), 2);
+            string binaryStr1 = Convert.ToString(int.Parse(data1.ToString()), 2);
+            string binaryStr2 = Convert.ToString(int.Parse(data2.ToString()), 2);
 
             // 左側に0を詰める
             binaryStr1 = binaryStr1.PadLeft(8, '0');
@@ -85,7 +85,7 @@ namespace APP
             string combinedBinary = binaryStr1 + binaryStr2;
 
             // 結合した2進数を10進数に変換
-            uint result = Convert.ToUInt32(combinedBinary, 2);
+            UInt16 result = Convert.ToUInt16(combinedBinary, 2);
 
             return result;
         }
@@ -94,11 +94,11 @@ namespace APP
         /// 関数：2バイトを10進数に変換(符号あり)
         /// </summary>
 
-        public static int signcombine_2byte(string data1, string data2)
+        public static int signcombine_2byte(byte data1, byte data2)
         {
             // 文字列を2進数に変換
-            string binaryStr1 = Convert.ToString(int.Parse(data1), 2);
-            string binaryStr2 = Convert.ToString(int.Parse(data2), 2);
+            string binaryStr1 = Convert.ToString(int.Parse(data1.ToString()), 2);
+            string binaryStr2 = Convert.ToString(int.Parse(data2.ToString()), 2);
 
             // 左側に0を詰める
             binaryStr1 = binaryStr1.PadLeft(8, '0');
@@ -117,13 +117,13 @@ namespace APP
         /// 関数：4バイトを10進数に変換(符号なし)
         /// </summary>
 
-        public static uint combine_4byte(string data1, string data2, string data3, string data4)
+        public static uint combine_4byte(byte data1, byte data2, byte data3, byte data4)
         {
             // 文字列を2進数に変換
-            string binaryStr1 = Convert.ToString(int.Parse(data1), 2);
-            string binaryStr2 = Convert.ToString(int.Parse(data2), 2);
-            string binaryStr3 = Convert.ToString(int.Parse(data3), 2);
-            string binaryStr4 = Convert.ToString(int.Parse(data4), 2);
+            string binaryStr1 = Convert.ToString(int.Parse(data1.ToString()), 2);
+            string binaryStr2 = Convert.ToString(int.Parse(data2.ToString()), 2);
+            string binaryStr3 = Convert.ToString(int.Parse(data3.ToString()), 2);
+            string binaryStr4 = Convert.ToString(int.Parse(data4.ToString()), 2);
 
             // 左側に0を詰める
             binaryStr1 = binaryStr1.PadLeft(8, '0');
@@ -144,13 +144,13 @@ namespace APP
         /// 関数：4バイトを10進数に変換(符号あり)
         /// </summary>
 
-        public static int signcombine_4byte(string data1, string data2, string data3, string data4)
+        public static int signcombine_4byte(byte data1, byte data2, byte data3, byte data4)
         {
             // 文字列を2進数に変換
-            string binaryStr1 = Convert.ToString(int.Parse(data1), 2);
-            string binaryStr2 = Convert.ToString(int.Parse(data2), 2);
-            string binaryStr3 = Convert.ToString(int.Parse(data3), 2);
-            string binaryStr4 = Convert.ToString(int.Parse(data4), 2);
+            string binaryStr1 = Convert.ToString(int.Parse(data1.ToString()), 2);
+            string binaryStr2 = Convert.ToString(int.Parse(data2.ToString()), 2);
+            string binaryStr3 = Convert.ToString(int.Parse(data3.ToString()), 2);
+            string binaryStr4 = Convert.ToString(int.Parse(data4.ToString()), 2);
 
             // 左側に0を詰める
             binaryStr1 = binaryStr1.PadLeft(8, '0');

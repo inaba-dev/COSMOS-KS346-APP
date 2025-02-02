@@ -13,7 +13,13 @@ namespace APP
 
     public class ClassNdirSensorParam
     {
-
+        public Int32 spanConcentration;
+        public Int32 lowAlarmThreshold;
+        public Int32 highAlarmThreshold;
+        public Int32 spanHighConcentration;
+        public Int32 overRange;
+        public Int32 overRangeHigh;
+        public Int32 driftAlarmThreshold;
     }
 
     /// <summary>
@@ -28,9 +34,17 @@ namespace APP
 
         public ClassNdirSensorParam Parse(List<byte> datas)
         {
-            if (datas == null || datas.Count < 35) return null;
+            if (datas == null || datas.Count < 30) return null;
 
             ClassNdirSensorParam param = new ClassNdirSensorParam();
+
+            int p = 5;
+            param.spanConcentration     = Func.signcombine_4byte(datas[p], datas[p + 1], datas[p + 2], datas[p + 3]); p += 4;
+            param.lowAlarmThreshold     = Func.signcombine_4byte(datas[p], datas[p + 1], datas[p + 2], datas[p + 3]); p += 4;
+            param.highAlarmThreshold    = Func.signcombine_4byte(datas[p], datas[p + 1], datas[p + 2], datas[p + 3]); p += 4;
+            param.spanHighConcentration = Func.signcombine_4byte(datas[p], datas[p + 1], datas[p + 2], datas[p + 3]); p += 4;
+            param.overRange             = Func.signcombine_4byte(datas[p], datas[p + 1], datas[p + 2], datas[p + 3]); p += 4;
+            param.overRangeHigh         = Func.signcombine_4byte(datas[p], datas[p + 1], datas[p + 2], datas[p + 3]); p += 4;
 
             return param;
         }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static APP.ClassSensorMain;
 
 namespace APP
@@ -75,7 +76,20 @@ namespace APP
 
         private void buttonData_Click(object sender, EventArgs e)
         {
+            /// 受信処理
+            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ状態取得, CH, null);
 
+            /// 受信パケット解析
+            var temporary = Common.Sensor.ControlNdirSensorStatus.Parse(receivedatas);
+            if (temporary == null) return;
+
+            /// ラベル表示
+            textStatus.Text = temporary.Status.ToString("X2");
+            textAlarm.Text = temporary.Alarm.ToString("X2");
+            textError.Text = temporary.Error.ToString("X4");
+            textGasConc.Text = temporary.GasConc.ToString();
+            textCount.Text = temporary.RawCount.ToString();
+            textTemp.Text = temporary.Temperature.ToString();
         }
 
         /// <summary>
@@ -108,6 +122,19 @@ namespace APP
             textGas.Text = Common.Sensor.ControlNdirSensorInfo.GetGasName(temporary);
         }
 
+        private void buttonSerial_Click(object sender, EventArgs e)
+        {
+            /// 受信処理
+            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ情報取得, CH, null);
+
+            /// 受信パケット解析
+            var temporary = Common.Sensor.ControlNdirSensorInfo.Parse(receivedatas);
+            if (temporary == null) return;
+
+            /// ラベル表示
+            textSerial.Text = temporary.シリアルNo.ToString("X8");
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -123,12 +150,12 @@ namespace APP
 
         private void buttonSet_B0_Click(object sender, EventArgs e)
         {
-
+            bool ret = SetNdirSensorParam(0x01, 450000);
         }
 
         private void buttonSet_B1_Click(object sender, EventArgs e)
         {
-
+            bool ret = SetNdirSensorParam(0x02, 200000);
         }
 
         private void buttonSet_B2_Click(object sender, EventArgs e)
@@ -151,9 +178,29 @@ namespace APP
 
         }
 
-        private void buttonSet_製造番号_Click(object sender, EventArgs e)
+        private bool SetNdirSensorParam(byte flag, Int32 wdata)
         {
+            //ClassNdirSensorParam param = new ClassNdirSensorParam();
 
+            byte[] data = Func.Change_4bytes(wdata.ToString());
+
+            /// 書込みデータ
+            List<byte> writedatas = new List<byte>();
+            writedatas.Add(flag);
+            writedatas.Add(data[0]);
+            writedatas.Add(data[1]);
+            writedatas.Add(data[2]);
+            writedatas.Add(data[3]);
+
+            /// 受信処理
+            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサパラメータ設定, CH, writedatas);
+
+            /// 受信パケット解析
+            //param = Common.Sensor.ControlNdirSensorParam.Parse(receivedatas);
+            //if (param == null) return null;
+
+            /// Return
+            return true;
         }
 
         /// <summary>
@@ -162,37 +209,75 @@ namespace APP
 
         private void buttonGet_B0_Click(object sender, EventArgs e)
         {
+            var temporary = GetNdirSensorParam(0x01);
+            if(temporary == null) return;
 
+            /// ラベル表示
+            textR_B0.Text = temporary.spanConcentration.ToString();
         }
 
         private void buttonGet_B1_Click(object sender, EventArgs e)
         {
+            var temporary = GetNdirSensorParam(0x02);
+            if (temporary == null) return;
 
+            /// ラベル表示
+            textR_B1.Text = temporary.lowAlarmThreshold.ToString();
         }
 
         private void buttonGet_B2_Click(object sender, EventArgs e)
         {
+            var temporary = GetNdirSensorParam(0x04);
+            if (temporary == null) return;
 
+            /// ラベル表示
+            textR_B2.Text = temporary.highAlarmThreshold.ToString();
         }
 
         private void buttonGet_B3_Click(object sender, EventArgs e)
         {
+            var temporary = GetNdirSensorParam(0x08);
+            if (temporary == null) return;
 
+            /// ラベル表示
+            textR_B3.Text = temporary.spanHighConcentration.ToString();
         }
 
         private void buttonGet_B4_Click(object sender, EventArgs e)
         {
+            var temporary = GetNdirSensorParam(0x10);
+            if (temporary == null) return;
 
+            /// ラベル表示
+            textR_B4.Text = temporary.spanHighConcentration.ToString();
         }
 
         private void buttonGet_B5_Click(object sender, EventArgs e)
         {
+            var temporary = GetNdirSensorParam(0x20);
+            if (temporary == null) return;
 
+            /// ラベル表示
+            textR_B5.Text = temporary.spanHighConcentration.ToString();
         }
 
-        private void buttonGet_製造番号_Click(object sender, EventArgs e)
+        private ClassNdirSensorParam GetNdirSensorParam(byte flag)
         {
+            ClassNdirSensorParam param = new ClassNdirSensorParam();
+            
+            /// 書込みデータ
+            List<byte> writedatas = new List<byte>();
+            writedatas.Add(flag);
 
+            /// 受信処理
+            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサパラメータ取得, CH, writedatas);
+
+            /// 受信パケット解析
+            param = Common.Sensor.ControlNdirSensorParam.Parse(receivedatas);
+            if (param == null) return null;
+
+            /// Return
+            return param;
         }
     }
 }
