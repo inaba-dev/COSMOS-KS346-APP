@@ -60,10 +60,8 @@
     <Compile Include="Command\Control_NdirZeroAdjust.cs" />
     <Compile Include="Command\Control_NdirSensorParam.cs" />
     <Compile Include="Command\Control_NdirSensorStatus.cs" />
-    <Compile Include="Command\Control_Version.cs" />
-    <Compile Include="Command\Control_GasParam.cs" />
-    <Compile Include="Command\Control_SensorUseTime.cs" />
-    <Compile Include="Command\Control_SensorParam.cs" />
+    <Compile Include="Command\Control_NdirVersion.cs" />
+    <Compile Include="Command\Control_NdirSensorInfo.cs" />
     <Compile Include="Component\TextboxNumberEx.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -19,9 +19,9 @@ namespace APP
         private ClassSensorPacket Packet = new ClassSensorPacket();
 
         public Control_GasParam ControlGasParam = new Control_GasParam();
-        public Control_SensorParam ControlSensorParam = new Control_SensorParam();
+        public Control_NdirSensorInfo ControlSensorParam = new Control_NdirSensorInfo();
         public Control_SensorUseTime ControlSensorTime = new Control_SensorUseTime();
-        public Control_Version ControlVersion = new Control_Version();
+        public Control_NdirVersion ControlVersion = new Control_NdirVersion();
 
         public Control_NdirSensorParam ControlNdirSensorParam = new Control_NdirSensorParam();
         public Control_NdirSensorStatus ControlNdirSensorStatus = new Control_NdirSensorStatus();
@@ -54,6 +54,15 @@ namespace APP
             センサ使用時間取得,
             センサ使用時間設定,
             バージョン取得,
+            NDIRセンサ情報取得,
+            NDIRセンサ状態取得,
+            NDIRセンサパラメータ取得,
+            NDIRセンサパラメータ設定,
+            NDIRセンサゼロ調整要求,
+            NDIRセンサゼロ調整結果,
+            NDIRセンサスパン調整要求,
+            NDIRセンサスパン調整結果,
+            NDIRセンサバージョン取得,
         };
 
         public static StFunc[] Command = new StFunc[]
@@ -70,6 +79,15 @@ namespace APP
             new StFunc() {code = 0x16, name = "センサ使用時間取得"},
             new StFunc() {code = 0x17, name = "センサ使用時間設定"},
             new StFunc() {code = 0xC4, name = "バージョン取得"},
+            new StFunc() {code = 0x40, name = "NDIRセンサ情報取得"},
+            new StFunc() {code = 0x41, name = "NDIRセンサ状態取得"},
+            new StFunc() {code = 0x42, name = "NDIRセンサパラメータ取得"},
+            new StFunc() {code = 0x43, name = "NDIRセンサパラメータ設定"},
+            new StFunc() {code = 0x45, name = "NDIRセンサゼロ調整要求"},
+            new StFunc() {code = 0x46, name = "NDIRセンサゼロ調整結果"},
+            new StFunc() {code = 0x47, name = "NDIRセンサスパン調整要求"},
+            new StFunc() {code = 0x48, name = "NDIRセンサスパン調整結果"},
+            new StFunc() {code = 0x49, name = "NDIRセンサバージョン取得"},
         };
 
         /// <summary>
