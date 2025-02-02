@@ -18,15 +18,12 @@ namespace APP
 
         private ClassSensorPacket Packet = new ClassSensorPacket();
 
-        public Control_GasParam ControlGasParam = new Control_GasParam();
-        public Control_NdirSensorInfo ControlSensorParam = new Control_NdirSensorInfo();
-        public Control_SensorUseTime ControlSensorTime = new Control_SensorUseTime();
-        public Control_NdirVersion ControlVersion = new Control_NdirVersion();
-
+        public Control_NdirSensorInfo ControlNdirSensorInfo = new Control_NdirSensorInfo();
         public Control_NdirSensorParam ControlNdirSensorParam = new Control_NdirSensorParam();
         public Control_NdirSensorStatus ControlNdirSensorStatus = new Control_NdirSensorStatus();
         public Control_NdirSpanAdjust ControlNdirSpanAdjust = new Control_NdirSpanAdjust();
         public Control_NdirZeroAdjust ControlNdirZeroAdjust = new Control_NdirZeroAdjust();
+        public Control_NdirVersion ControlNdirVersion = new Control_NdirVersion();
 
         public delegate List<string> FuncDelegate(List<byte> datas);
 

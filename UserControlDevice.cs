@@ -85,27 +85,27 @@ namespace APP
         private void buttonVer_Click(object sender, EventArgs e)
         {
             /// 受信処理
-            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.バージョン取得, CH, null);
+            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサバージョン取得, CH, null);
 
             /// 受信パケット解析
-            var temporary = Common.Sensor.ControlVersion.Parse(receivedatas);
+            var temporary = Common.Sensor.ControlNdirVersion.Parse(receivedatas);
             if (temporary == null) return;
 
             /// ラベル表示
-            textVer.Text = Common.Sensor.ControlVersion.GetVersion(temporary);
+            textVer.Text = Common.Sensor.ControlNdirVersion.GetVersion(temporary);
         }
 
         private void buttonGas_Click(object sender, EventArgs e)
         {
             /// 受信処理
-            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.センサ情報取得, CH, null);
+            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ情報取得, CH, null);
 
             /// 受信パケット解析
-            var temporary = Common.Sensor.ControlSensorParam.Parse(receivedatas);
+            var temporary = Common.Sensor.ControlNdirSensorInfo.Parse(receivedatas);
             if (temporary == null) return;
 
             /// ラベル表示
-            textGas.Text = Common.Sensor.ControlSensorParam.GetGasName(temporary);
+            textGas.Text = Common.Sensor.ControlNdirSensorInfo.GetGasName(temporary);
         }
 
         /// <summary>
