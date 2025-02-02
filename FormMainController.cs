@@ -110,7 +110,7 @@ namespace APP
             CH8.StatusRenewEvent();
 
             /// グラフ更新
-
+            Chart.GraphPlot();
         }
     }
 }

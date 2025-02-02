@@ -19,6 +19,7 @@ namespace APP
         {             
             /// センサのインスタンス
             Common.Sensor = new ClassSensorMain();
+            Common.Sensor.Initialize();
 
             /// ステータス画面のインスタンス
             //Common.Status = new UserControlDevice();
@@ -43,6 +44,9 @@ namespace APP
             CH6.Setup(6);
             CH7.Setup(7);
             CH8.Setup(8);
+
+            /// グラフ初期化
+            Chart.Initialization();
         }
 
         /// <summary>

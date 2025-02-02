@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox_conc = new System.Windows.Forms.GroupBox();
             this.labelStart = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
@@ -47,7 +44,7 @@
             this.comboBox_COM = new System.Windows.Forms.ComboBox();
             this.buttonComSearch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.CH8 = new APP.UserControlDevice();
             this.CH7 = new APP.UserControlDevice();
             this.CH6 = new APP.UserControlDevice();
@@ -56,11 +53,10 @@
             this.CH3 = new APP.UserControlDevice();
             this.CH2 = new APP.UserControlDevice();
             this.CH1 = new APP.UserControlDevice();
-            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.Chart = new APP.UserControlChart();
             this.groupBox_conc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericInterval)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox_conc
@@ -259,21 +255,9 @@
             this.groupBox1.TabIndex = 275;
             this.groupBox1.TabStop = false;
             // 
-            // chart
+            // timer
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart.Legends.Add(legend1);
-            this.chart.Location = new System.Drawing.Point(13, 690);
-            this.chart.Name = "chart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(1040, 200);
-            this.chart.TabIndex = 279;
-            this.chart.Text = "chart1";
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // CH8
             // 
@@ -347,15 +331,19 @@
             this.CH1.Size = new System.Drawing.Size(380, 300);
             this.CH1.TabIndex = 280;
             // 
-            // timer
+            // Chart
             // 
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            this.Chart.Location = new System.Drawing.Point(13, 690);
+            this.Chart.Name = "Chart";
+            this.Chart.Size = new System.Drawing.Size(1040, 200);
+            this.Chart.TabIndex = 288;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 901);
+            this.Controls.Add(this.Chart);
             this.Controls.Add(this.CH8);
             this.Controls.Add(this.CH7);
             this.Controls.Add(this.CH6);
@@ -364,7 +352,6 @@
             this.Controls.Add(this.CH3);
             this.Controls.Add(this.CH2);
             this.Controls.Add(this.CH1);
-            this.Controls.Add(this.chart);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox_conc);
             this.MaximumSize = new System.Drawing.Size(1600, 940);
@@ -376,7 +363,6 @@
             this.groupBox_conc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericInterval)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -392,7 +378,6 @@
         private System.Windows.Forms.Button buttonComSearch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown numericInterval;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private UserControlDevice CH1;
         private UserControlDevice CH2;
         private UserControlDevice CH3;
@@ -407,6 +392,7 @@
         private System.Windows.Forms.Label labelStart;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Timer timer;
+        private UserControlChart Chart;
     }
 }
 

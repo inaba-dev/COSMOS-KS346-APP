@@ -16,6 +16,8 @@ namespace APP
     {
         public ClasssCom Com = new ClasssCom();
 
+        public ClassNdirSensorStatus[] CurrentStatus = new ClassNdirSensorStatus[8];
+
         private ClassSensorPacket Packet = new ClassSensorPacket();
 
         public Control_NdirSensorInfo ControlNdirSensorInfo = new Control_NdirSensorInfo();
@@ -26,6 +28,22 @@ namespace APP
         public Control_NdirVersion ControlNdirVersion = new Control_NdirVersion();
 
         public delegate List<string> FuncDelegate(List<byte> datas);
+
+        /// <summary>
+        /// 
+        /// </summary>
+
+        public void Initialize()
+        {
+            CurrentStatus[0] = new ClassNdirSensorStatus();
+            CurrentStatus[1] = new ClassNdirSensorStatus();
+            CurrentStatus[2] = new ClassNdirSensorStatus();
+            CurrentStatus[3] = new ClassNdirSensorStatus();
+            CurrentStatus[4] = new ClassNdirSensorStatus();
+            CurrentStatus[5] = new ClassNdirSensorStatus();
+            CurrentStatus[6] = new ClassNdirSensorStatus();
+            CurrentStatus[7] = new ClassNdirSensorStatus();
+        }
 
         /// <summary>
         /// 

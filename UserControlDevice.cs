@@ -102,6 +102,9 @@ namespace APP
             textGasConc.Text = temporary.GasConc.ToString();
             textCount.Text = temporary.RawCount.ToString();
             textTemp.Text = temporary.Temperature.ToString();
+
+            ///
+            Common.Sensor.CurrentStatus[CH - 1] = temporary;
         }
 
         /// <summary>
