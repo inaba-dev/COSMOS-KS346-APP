@@ -8,9 +8,17 @@ namespace APP
     {
         private SerialPort serial = new SerialPort();
 
+#if DEMO
+        private bool bOpen = false;
+#endif
+
         public bool IsOpen()
         {
+#if DEMO
+            return bOpen;
+#else
             return serial.IsOpen;
+#endif
         }
 
         public bool Open(string portName, int baudRate, int readSize)
@@ -28,11 +36,16 @@ namespace APP
 
             try
             {
+#if DEMO
+                bOpen = true;
+                return true;
+#else
                 serial.Open();
 
                 serial.DiscardOutBuffer(); //送信バッファをクリアする　  
                 serial.DiscardInBuffer();　 //受信バッファをクリアする
                 return true;
+#endif
             }
             catch (Exception)
             {
@@ -44,10 +57,14 @@ namespace APP
 
         public void Close()
         {
+#if DEMO
+            bOpen = false;
+#else
             if (IsOpen())
             {
                 serial.Close();
             }
+#endif
         }
 
         public void Send(byte[] srcBuff)

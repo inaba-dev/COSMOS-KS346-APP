@@ -321,6 +321,9 @@ namespace APP
 
         private bool _Exec_CommSelect(int ch)
         {
+#if DEMO
+            return true;
+#else
             int RetryCount = 0;
             byte[] receivedDatas = new byte[256];
 
@@ -350,6 +353,7 @@ namespace APP
             }
 
             return false;
+#endif
         }
 
         /// <summary>
@@ -358,8 +362,13 @@ namespace APP
 
         private List<byte> _Exec_ComSensor(byte cmd, List<byte> writedatas)
         {
-            int RetryCount = 0;
             byte[] receivedDatas = new byte[256];
+#if DEMO
+            ClassSensorDebug Debug = new ClassSensorDebug();
+
+            return Debug.RecievePacket(cmd);
+#else
+            int RetryCount = 0;
 
             /// 送信パケット生成
             List<byte> packet = Packet.DataPacket_create((byte)cmd, writedatas);
@@ -396,6 +405,7 @@ namespace APP
             }
 
             return null;
+#endif
         }
     }
 }

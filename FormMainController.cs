@@ -43,13 +43,17 @@ namespace APP
             this.comboBox_COM.Text = "";
             this.comboBox_COM.Refresh();
 
+#if DEMO
+            this.comboBox_COM.Items.Add("COM00");
+#else
+
             /// COMポートの取得
             string[] ports = SerialPort.GetPortNames();
             foreach (var port in ports)
             {
                 this.comboBox_COM.Items.Add(port);
             }
-
+#endif
             /// 先頭をフォーカス
             if (this.comboBox_COM.Items.Count > 0) this.comboBox_COM.SelectedIndex = 0;
         }
