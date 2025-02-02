@@ -101,6 +101,14 @@ namespace APP
 
         private void button_start_Click(object sender, EventArgs e)
         {
+            timer.Enabled = true;
+
+            ///タイマ周期取得
+            timer.Interval = (int)numericInterval.Value * 1000;
+
+            /// Form画面更新
+            UpdateEvent(null, null);
+
             Common.richTextBox.Nothing();
         }
 
@@ -110,6 +118,11 @@ namespace APP
 
         private void button_stop_Click(object sender, EventArgs e)
         {
+            timer.Enabled = false;
+
+            /// Form画面更新
+            UpdateEvent(null, null);
+
             Common.richTextBox.Nothing();
         }
 
@@ -135,6 +148,9 @@ namespace APP
             /// 切断
             Common.Sensor.Com.Close();
 
+            /// Timer停止
+            button_stop_Click(null, null);
+
             /// Form画面更新
             UpdateEvent(null, null);
         }
@@ -156,6 +172,16 @@ namespace APP
         {
             /// ログ保存先設定
             SearchFolder();
+        }
+
+        /// <summary>
+        /// タイマイベント
+        /// </summary>
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            /// Timerイベント処理
+            TimerEvent();
         }
     }
 }

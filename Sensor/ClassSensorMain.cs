@@ -259,10 +259,10 @@ namespace APP
         private bool Communication(StFunc cmd, int ch, List<byte> writedatas, FuncDelegate readfunc, out List<byte> receivedatas)
         {
             /// 作業名
-            Common.Config.config.funcstring = cmd.name;
-            Common.richTextBox.WriteLF(ClassWriteLog.Start_Log(ch));
+            //Common.Config.config.funcstring = cmd.name;
+            //Common.richTextBox.WriteLF(ClassWriteLog.Start_Log(ch));
 
-            string funcname = Common.Config.config.funcstring;
+            //string funcname = Common.Config.config.funcstring;
 
             /// 処理実行
             bool res = _Exec_Communication(cmd, ch, writedatas, out receivedatas);
@@ -270,12 +270,12 @@ namespace APP
             if (!res)
             {
                 //Common.Status.LabelUpdate(ch, funcname + "失敗", false);
-                Common.richTextBox.WriteLF(ClassWriteLog.Finish_Log(funcname + " ** 失敗 **"));
+                Common.richTextBox.WriteLF(ClassWriteLog.Finish_Log(ch, cmd.name + " ** 失敗 **"));
             }
             else
             {
                 //Common.Status.LabelUpdate(ch, funcname + "成功", true);
-                Common.richTextBox.WriteLF(ClassWriteLog.Finish_Log(funcname + " 成功"));
+                Common.richTextBox.WriteLF(ClassWriteLog.Finish_Log(ch, cmd.name + " 成功"));
 
                 /// 結果出力(表示)
                 if (readfunc != null && receivedatas != null)

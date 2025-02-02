@@ -88,6 +88,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sensor\ClassSensorPacket.cs" />
+    <Compile Include="UserControlChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlChart.Designer.cs">
+      <DependentUpon>UserControlChart.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlLog.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,6 +119,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControlChart.resx">
+      <DependentUpon>UserControlChart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlLog.resx">
       <DependentUpon>UserControlLog.cs</DependentUpon>
     </EmbeddedResource>

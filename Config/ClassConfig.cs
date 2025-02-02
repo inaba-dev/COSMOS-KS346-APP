@@ -16,7 +16,6 @@ namespace APP
     {
         public bool[] checkboxes = new bool[8];
         public string[] serialnumbers = new string[8];
-        public string funcstring;
 
         /// 初期化
 

@@ -51,25 +51,36 @@ namespace APP
 
         private void FormViewRenew()
         {
-            bool valid = Common.Sensor.Com.IsOpen();
+            bool bOpen = Common.Sensor.Com.IsOpen();
 
-            CH1.Valid(valid);
-            CH2.Valid(valid);
-            CH3.Valid(valid);
-            CH4.Valid(valid);
-            CH5.Valid(valid);
-            CH6.Valid(valid);
-            CH7.Valid(valid);
-            CH8.Valid(valid);
-
-            Func.sendbutton_Color_control(buttonConnect, !valid);
-            Func.sendbutton_Color_control(buttonDisConnect, valid);
+            Func.sendbutton_Color_control(buttonConnect, !bOpen);
+            Func.sendbutton_Color_control(buttonDisConnect, bOpen);
 
             //Func.sendbutton_Color_control(button_Logsave, valid);
             //Func.sendbutton_Color_control(button_Logclear, true);
 
-            Func.sendbutton_Color_control(button_start, valid);
-            Func.sendbutton_Color_control(button_stop, valid);
+            Func.sendbutton_Color_control(button_start, bOpen && !timer.Enabled);
+            Func.sendbutton_Color_control(button_stop, bOpen && timer.Enabled);
+
+            numericInterval.Enabled = !timer.Enabled;
+
+            CH1.Enabled = !timer.Enabled;
+            CH2.Enabled = !timer.Enabled;
+            CH3.Enabled = !timer.Enabled;
+            CH4.Enabled = !timer.Enabled;
+            CH5.Enabled = !timer.Enabled;
+            CH6.Enabled = !timer.Enabled;
+            CH7.Enabled = !timer.Enabled;
+            CH8.Enabled = !timer.Enabled;
+
+            CH1.Valid(bOpen, timer.Enabled);
+            CH2.Valid(bOpen, timer.Enabled);
+            CH3.Valid(bOpen, timer.Enabled);
+            CH4.Valid(bOpen, timer.Enabled);
+            CH5.Valid(bOpen, timer.Enabled);
+            CH6.Valid(bOpen, timer.Enabled);
+            CH7.Valid(bOpen, timer.Enabled);
+            CH8.Valid(bOpen, timer.Enabled);
         }
     }
 }

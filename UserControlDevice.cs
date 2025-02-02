@@ -40,13 +40,25 @@ namespace APP
         /// 
         /// </summary>
 
-        public void Valid(bool flag_comopen)
+        public void StatusRenewEvent()
+        {
+            if (checkValid.Checked)
+            {
+                buttonData_Click(null, EventArgs.Empty);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+
+        public void Valid(bool flag_comopen, bool flag_timer)
         {
             bool valid = flag_comopen && checkValid.Checked;
 
             if (valid)
             {
-                this.BackColor = Color.PaleTurquoise;
+                this.BackColor = !flag_timer ? Color.PaleTurquoise : Color.Red;
                 tabControl.Enabled = true;
             }
             else 

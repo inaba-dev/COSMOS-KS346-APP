@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -37,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button_path = new System.Windows.Forms.Button();
             this.textBox_path = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericInterval = new System.Windows.Forms.NumericUpDown();
             this.button_start = new System.Windows.Forms.Button();
             this.button_stop = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -55,8 +56,9 @@
             this.CH3 = new APP.UserControlDevice();
             this.CH2 = new APP.UserControlDevice();
             this.CH1 = new APP.UserControlDevice();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.groupBox_conc.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericInterval)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +71,7 @@
             this.groupBox_conc.Controls.Add(this.label1);
             this.groupBox_conc.Controls.Add(this.button_path);
             this.groupBox_conc.Controls.Add(this.textBox_path);
-            this.groupBox_conc.Controls.Add(this.numericUpDown1);
+            this.groupBox_conc.Controls.Add(this.numericInterval);
             this.groupBox_conc.Controls.Add(this.button_start);
             this.groupBox_conc.Controls.Add(this.button_stop);
             this.groupBox_conc.Controls.Add(this.label9);
@@ -136,20 +138,20 @@
             this.textBox_path.TabIndex = 227;
             this.textBox_path.TabStop = false;
             // 
-            // numericUpDown1
+            // numericInterval
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("メイリオ", 9.75F);
-            this.numericUpDown1.Location = new System.Drawing.Point(260, 21);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numericInterval.Font = new System.Drawing.Font("メイリオ", 9.75F);
+            this.numericInterval.Location = new System.Drawing.Point(260, 21);
+            this.numericInterval.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(72, 27);
-            this.numericUpDown1.TabIndex = 226;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numericInterval.Name = "numericInterval";
+            this.numericInterval.Size = new System.Drawing.Size(72, 27);
+            this.numericInterval.TabIndex = 226;
+            this.numericInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericInterval.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -345,6 +347,10 @@
             this.CH1.Size = new System.Drawing.Size(380, 300);
             this.CH1.TabIndex = 280;
             // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -368,7 +374,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.groupBox_conc.ResumeLayout(false);
             this.groupBox_conc.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericInterval)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
@@ -385,7 +391,7 @@
         private System.Windows.Forms.ComboBox comboBox_COM;
         private System.Windows.Forms.Button buttonComSearch;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericInterval;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private UserControlDevice CH1;
         private UserControlDevice CH2;
@@ -400,6 +406,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelStart;
         private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

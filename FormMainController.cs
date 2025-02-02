@@ -93,5 +93,24 @@ namespace APP
                 textBox_path.Text = fbd.SelectedPath;
             }
         }
+
+        /// <summary>
+        /// Timerイベント処理
+        /// </summary>
+        
+        private void TimerEvent()
+        {
+            CH1.StatusRenewEvent();
+            CH2.StatusRenewEvent();
+            CH3.StatusRenewEvent();
+            CH4.StatusRenewEvent();
+            CH5.StatusRenewEvent();
+            CH6.StatusRenewEvent();
+            CH7.StatusRenewEvent();
+            CH8.StatusRenewEvent();
+
+            /// グラフ更新
+
+        }
     }
 }
