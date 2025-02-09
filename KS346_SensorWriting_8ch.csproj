@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassCom.cs" />
+    <Compile Include="ClassLogger.cs" />
     <Compile Include="Command\Control_NdirSpanAdjust.cs" />
     <Compile Include="Command\Control_NdirZeroAdjust.cs" />
     <Compile Include="Command\Control_NdirSensorParam.cs" />
@@ -64,6 +65,9 @@
     <Compile Include="Command\Control_NdirSensorInfo.cs" />
     <Compile Include="Component\TextboxNumberEx.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormConfig.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMainView.cs">
       <SubType>Form</SubType>

@@ -12,10 +12,13 @@ namespace APP
         static public ClassSensorMain Sensor;
 
         /// UserControl
-        //static public UserControlDevice Status;
         static public UserControlLog richTextBox;
 
-        static public ControlConfig Config = new ControlConfig();
+        /// Configデータ
+        static public ClassConfig Config = new ClassConfig();
+
+        /// ログ開始時間
+        static public DateTime StartTime;
 
         /// <summary>
         /// 共通変数
@@ -60,7 +63,7 @@ namespace APP
             //Common.Status.GetSelectCH();
 
             /// チェックボックス確認
-            if (Common.Config.config.checkboxes.Count(s => s == true) == 0)
+            if (Common.Config.checkboxes.Count(s => s == true) == 0)
             {
                 ClassMessageBox.CH_ErrorMessage();
                 return false;
@@ -74,9 +77,6 @@ namespace APP
 
             /// ログクリア
             Common.richTextBox.Clear();
-
-            /// Config Save
-            Common.Config.SaveConfig();
 
             return true;
         }

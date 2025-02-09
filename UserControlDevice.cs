@@ -14,9 +14,14 @@ namespace APP
 {
     public partial class UserControlDevice : UserControl
     {
+        /// 自CH情報
         private int CH = 0;
 
+        /// 更新イベント
         public event EventHandler UpdateEvent;
+
+        /// 保存クラス
+        public ClassLogger Logger;
 
         public UserControlDevice()
         {
@@ -34,6 +39,9 @@ namespace APP
 
             ///ラベルを更新
             checkValid.Text = ch + "CH";
+
+            ///インスタンス定義
+            Logger = new ClassLogger(ch);
         }
 
         /// <summary>
@@ -45,6 +53,8 @@ namespace APP
             if (checkValid.Checked)
             {
                 buttonData_Click(null, EventArgs.Empty);
+
+                Logger.Write(Common.Sensor.CurrentStatus[CH - 1]);
             }
         }
 
@@ -92,19 +102,20 @@ namespace APP
             List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ状態取得, CH, null);
 
             /// 受信パケット解析
-            var temporary = Common.Sensor.ControlNdirSensorStatus.Parse(receivedatas);
-            if (temporary == null) return;
+            ClassNdirSensorStatus CurrentStatus = Common.Sensor.ControlNdirSensorStatus.Parse(receivedatas);
+
+            if (CurrentStatus == null) return;
 
             /// ラベル表示
-            textStatus.Text = temporary.Status.ToString("X2");
-            textAlarm.Text = temporary.Alarm.ToString("X2");
-            textError.Text = temporary.Error.ToString("X4");
-            textGasConc.Text = temporary.GasConc.ToString();
-            textCount.Text = temporary.RawCount.ToString();
-            textTemp.Text = temporary.Temperature.ToString();
+            textStatus.Text = CurrentStatus.Status.ToString("X2");
+            textAlarm.Text = CurrentStatus.Alarm.ToString("X2");
+            textError.Text = CurrentStatus.Error.ToString("X4");
+            textGasConc.Text = CurrentStatus.GasConc.ToString();
+            textCount.Text = CurrentStatus.RawCount.ToString();
+            textTemp.Text = CurrentStatus.Temperature.ToString();
 
             ///
-            Common.Sensor.CurrentStatus[CH - 1] = temporary;
+            Common.Sensor.CurrentStatus[CH - 1] = CurrentStatus;
         }
 
         /// <summary>

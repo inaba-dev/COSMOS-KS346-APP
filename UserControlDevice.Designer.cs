@@ -47,6 +47,9 @@
             this.buttonSpan = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonSerial = new System.Windows.Forms.Button();
+            this.textSerial = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -89,9 +92,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.checkValid = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textSerial = new System.Windows.Forms.TextBox();
-            this.buttonSerial = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericW_B3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericW_B0)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -353,6 +353,44 @@
             this.tabPage1.Size = new System.Drawing.Size(357, 250);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = " ステータス";
+            // 
+            // buttonSerial
+            // 
+            this.buttonSerial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonSerial.Font = new System.Drawing.Font("メイリオ", 8F);
+            this.buttonSerial.Location = new System.Drawing.Point(142, 73);
+            this.buttonSerial.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSerial.Name = "buttonSerial";
+            this.buttonSerial.Size = new System.Drawing.Size(40, 24);
+            this.buttonSerial.TabIndex = 322;
+            this.buttonSerial.Text = "読出";
+            this.buttonSerial.UseVisualStyleBackColor = false;
+            this.buttonSerial.Click += new System.EventHandler(this.buttonSerial_Click);
+            // 
+            // textSerial
+            // 
+            this.textSerial.BackColor = System.Drawing.SystemColors.Control;
+            this.textSerial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textSerial.Font = new System.Drawing.Font("MS UI Gothic", 9F);
+            this.textSerial.ForeColor = System.Drawing.Color.Black;
+            this.textSerial.Location = new System.Drawing.Point(54, 75);
+            this.textSerial.Margin = new System.Windows.Forms.Padding(0);
+            this.textSerial.Name = "textSerial";
+            this.textSerial.ReadOnly = true;
+            this.textSerial.Size = new System.Drawing.Size(85, 19);
+            this.textSerial.TabIndex = 321;
+            this.textSerial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label8.Location = new System.Drawing.Point(4, 73);
+            this.label8.Margin = new System.Windows.Forms.Padding(0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 24);
+            this.label8.TabIndex = 319;
+            this.label8.Text = "製造番号";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel4
             // 
@@ -898,44 +936,6 @@
             this.checkValid.UseVisualStyleBackColor = false;
             this.checkValid.CheckedChanged += new System.EventHandler(this.valid_CheckedChanged);
             // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label8.Location = new System.Drawing.Point(4, 73);
-            this.label8.Margin = new System.Windows.Forms.Padding(0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 24);
-            this.label8.TabIndex = 319;
-            this.label8.Text = "製造番号";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textSerial
-            // 
-            this.textSerial.BackColor = System.Drawing.SystemColors.Control;
-            this.textSerial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textSerial.Font = new System.Drawing.Font("MS UI Gothic", 9F);
-            this.textSerial.ForeColor = System.Drawing.Color.Black;
-            this.textSerial.Location = new System.Drawing.Point(54, 75);
-            this.textSerial.Margin = new System.Windows.Forms.Padding(0);
-            this.textSerial.Name = "textSerial";
-            this.textSerial.ReadOnly = true;
-            this.textSerial.Size = new System.Drawing.Size(85, 19);
-            this.textSerial.TabIndex = 321;
-            this.textSerial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonSerial
-            // 
-            this.buttonSerial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonSerial.Font = new System.Drawing.Font("メイリオ", 8F);
-            this.buttonSerial.Location = new System.Drawing.Point(142, 73);
-            this.buttonSerial.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSerial.Name = "buttonSerial";
-            this.buttonSerial.Size = new System.Drawing.Size(40, 24);
-            this.buttonSerial.TabIndex = 322;
-            this.buttonSerial.Text = "読出";
-            this.buttonSerial.UseVisualStyleBackColor = false;
-            this.buttonSerial.Click += new System.EventHandler(this.buttonSerial_Click);
-            // 
             // UserControlDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1020,7 +1020,6 @@
         private System.Windows.Forms.Button buttonSet_B2;
         private System.Windows.Forms.NumericUpDown numericW_B1;
         private System.Windows.Forms.NumericUpDown numericW_B2;
-        private System.Windows.Forms.CheckBox checkValid;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label9;
@@ -1030,5 +1029,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonSerial;
         private System.Windows.Forms.TextBox textSerial;
+        public System.Windows.Forms.CheckBox checkValid;
     }
 }

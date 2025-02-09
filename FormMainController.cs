@@ -112,5 +112,16 @@ namespace APP
             /// グラフ更新
             Chart.GraphPlot();
         }
+
+        /// <summary>
+        /// 経過時間を計算
+        /// </summary>
+
+        private void RunTime()
+        {
+            TimeSpan span;
+            span = DateTime.Now - Common.StartTime;
+            labelRunTime.Text = "経過時間：" + span.ToString(@"hh\:mm\:ss");
+        }
     }
 }

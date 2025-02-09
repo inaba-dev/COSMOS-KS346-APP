@@ -46,7 +46,7 @@ namespace APP
         public void FormReload()
         {
             ///
-            Common.Config.LoadConfig();
+            execLoadConfig();
 
             ///
             getSoftwareVersion();
@@ -90,7 +90,8 @@ namespace APP
                 return;
             }
 
-            Common.Config.SaveConfig();
+            /// Config Save
+            execSaveConfig();
 
             e.Cancel = false;
         }
@@ -101,9 +102,33 @@ namespace APP
 
         private void button_start_Click(object sender, EventArgs e)
         {
+            /// Config Save
+            execSaveConfig();
+
+            CH1.Logger.Init(Common.Config.folderpath, Common.Config.checkboxes[0]);
+            CH2.Logger.Init(Common.Config.folderpath, Common.Config.checkboxes[1]);
+            CH3.Logger.Init(Common.Config.folderpath, Common.Config.checkboxes[2]);
+            CH4.Logger.Init(Common.Config.folderpath, Common.Config.checkboxes[3]);
+            CH5.Logger.Init(Common.Config.folderpath, Common.Config.checkboxes[4]);
+            CH6.Logger.Init(Common.Config.folderpath, Common.Config.checkboxes[5]);
+            CH7.Logger.Init(Common.Config.folderpath, Common.Config.checkboxes[6]);
+            CH8.Logger.Init(Common.Config.folderpath, Common.Config.checkboxes[7]);
+
             timer.Enabled = true;
 
-            ///タイマ周期取得
+            /// グラフを初期化
+            Chart.Initialization();
+
+            /// 開始時間を記録
+            Common.StartTime = DateTime.Now;
+            labelStart.Text = Common.StartTime.ToString("開始：yyyy/MM/dd HH:mm:ss");
+            labelStart.Visible = true;
+            labelRunTime.Visible = true;
+
+            /// 経過時間を計算
+            RunTime();
+
+            /// タイマ周期取得
             timer.Interval = (int)numericInterval.Value * 1000;
 
             /// Form画面更新
@@ -118,7 +143,20 @@ namespace APP
 
         private void button_stop_Click(object sender, EventArgs e)
         {
+            CH1.Logger.Close();
+            CH2.Logger.Close();
+            CH3.Logger.Close();
+            CH4.Logger.Close();
+            CH5.Logger.Close();
+            CH6.Logger.Close();
+            CH7.Logger.Close();
+            CH8.Logger.Close();
+
             timer.Enabled = false;
+
+            ///
+            labelStart.Visible = false;
+            labelRunTime.Visible = false;
 
             /// Form画面更新
             UpdateEvent(null, null);
@@ -182,6 +220,9 @@ namespace APP
         {
             /// Timerイベント処理
             TimerEvent();
+
+            /// 経過時間を計算
+            RunTime();
         }
     }
 }

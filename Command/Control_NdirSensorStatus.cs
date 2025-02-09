@@ -19,9 +19,17 @@ namespace APP
         public UInt32 GasConc;
         public UInt32 RawCount;
         public Int16 Temperature;
+
+        public ClassNdirSensorStatus()
+        {
+            Status = 0;
+            Alarm = 0;
+            Error = 0;
+            GasConc = 0;
+            RawCount = 0;                
+            Temperature = 0;
+        }
     }
-
-
 
     /// <summary>
     /// 

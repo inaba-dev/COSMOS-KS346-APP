@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox_conc = new System.Windows.Forms.GroupBox();
             this.labelStart = new System.Windows.Forms.Label();
-            this.labelTime = new System.Windows.Forms.Label();
+            this.labelRunTime = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button_path = new System.Windows.Forms.Button();
             this.textBox_path = new System.Windows.Forms.TextBox();
@@ -63,7 +63,7 @@
             // 
             this.groupBox_conc.BackColor = System.Drawing.Color.Transparent;
             this.groupBox_conc.Controls.Add(this.labelStart);
-            this.groupBox_conc.Controls.Add(this.labelTime);
+            this.groupBox_conc.Controls.Add(this.labelRunTime);
             this.groupBox_conc.Controls.Add(this.label1);
             this.groupBox_conc.Controls.Add(this.button_path);
             this.groupBox_conc.Controls.Add(this.textBox_path);
@@ -82,29 +82,29 @@
             // 
             this.labelStart.AutoSize = true;
             this.labelStart.Font = new System.Drawing.Font("メイリオ", 9.75F);
-            this.labelStart.Location = new System.Drawing.Point(356, 12);
+            this.labelStart.Location = new System.Drawing.Point(356, 13);
             this.labelStart.Name = "labelStart";
-            this.labelStart.Size = new System.Drawing.Size(108, 20);
+            this.labelStart.Size = new System.Drawing.Size(198, 20);
             this.labelStart.TabIndex = 231;
-            this.labelStart.Text = "開始：00:00:00";
+            this.labelStart.Text = "開始：YYYY/MM/DD 00:00:00";
             this.labelStart.Visible = false;
             // 
-            // labelTime
+            // labelRunTime
             // 
-            this.labelTime.AutoSize = true;
-            this.labelTime.Font = new System.Drawing.Font("メイリオ", 9.75F);
-            this.labelTime.Location = new System.Drawing.Point(356, 34);
-            this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(108, 20);
-            this.labelTime.TabIndex = 230;
-            this.labelTime.Text = "経過：00:00:00";
-            this.labelTime.Visible = false;
+            this.labelRunTime.AutoSize = true;
+            this.labelRunTime.Font = new System.Drawing.Font("メイリオ", 9.75F);
+            this.labelRunTime.Location = new System.Drawing.Point(356, 34);
+            this.labelRunTime.Name = "labelRunTime";
+            this.labelRunTime.Size = new System.Drawing.Size(108, 20);
+            this.labelRunTime.TabIndex = 230;
+            this.labelRunTime.Text = "経過：00:00:00";
+            this.labelRunTime.Visible = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("メイリオ", 9.75F);
-            this.label1.Location = new System.Drawing.Point(498, 24);
+            this.label1.Location = new System.Drawing.Point(567, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 20);
             this.label1.TabIndex = 229;
@@ -126,11 +126,11 @@
             // 
             this.textBox_path.BackColor = System.Drawing.Color.White;
             this.textBox_path.Font = new System.Drawing.Font("メイリオ", 9.75F);
-            this.textBox_path.Location = new System.Drawing.Point(553, 20);
+            this.textBox_path.Location = new System.Drawing.Point(622, 20);
             this.textBox_path.MaxLength = 99;
             this.textBox_path.Multiline = true;
             this.textBox_path.Name = "textBox_path";
-            this.textBox_path.Size = new System.Drawing.Size(527, 28);
+            this.textBox_path.Size = new System.Drawing.Size(458, 28);
             this.textBox_path.TabIndex = 227;
             this.textBox_path.TabStop = false;
             // 
@@ -390,7 +390,7 @@
         private System.Windows.Forms.TextBox textBox_path;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelStart;
-        private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.Label labelRunTime;
         private System.Windows.Forms.Timer timer;
         private UserControlChart Chart;
     }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace APP
 {
@@ -25,6 +26,15 @@ namespace APP
         public UserControlChart()
         {
             InitializeComponent();
+
+            // Series(系列)を生成します
+            Series series = new Series();
+
+            // 系列の種類を散布図に設定します
+            series.ChartType = SeriesChartType.Line;
+
+            // 系列の凡例を設置します
+            series.LegendText = "凡例1";
         }
 
         /// <summary>
@@ -65,14 +75,14 @@ namespace APP
 
                 ///データを最後尾に追加
 
-                _data.sensor[0] = Common.Sensor.CurrentStatus[0].GasConc;
-                _data.sensor[1] = Common.Sensor.CurrentStatus[1].GasConc;
-                _data.sensor[2] = Common.Sensor.CurrentStatus[2].GasConc;
-                _data.sensor[3] = Common.Sensor.CurrentStatus[3].GasConc;
-                _data.sensor[4] = Common.Sensor.CurrentStatus[4].GasConc;
-                _data.sensor[5] = Common.Sensor.CurrentStatus[5].GasConc;
-                _data.sensor[6] = Common.Sensor.CurrentStatus[6].GasConc;
-                _data.sensor[7] = Common.Sensor.CurrentStatus[7].GasConc;
+                _data.sensor[0] = Common.Config.checkboxes[0] ? Common.Sensor.CurrentStatus[0].GasConc : 0;
+                _data.sensor[1] = Common.Config.checkboxes[1] ? Common.Sensor.CurrentStatus[1].GasConc : 0;
+                _data.sensor[2] = Common.Config.checkboxes[2] ? Common.Sensor.CurrentStatus[2].GasConc : 0;
+                _data.sensor[3] = Common.Config.checkboxes[3] ? Common.Sensor.CurrentStatus[3].GasConc : 0;
+                _data.sensor[4] = Common.Config.checkboxes[4] ? Common.Sensor.CurrentStatus[4].GasConc : 0;
+                _data.sensor[5] = Common.Config.checkboxes[5] ? Common.Sensor.CurrentStatus[5].GasConc : 0;
+                _data.sensor[6] = Common.Config.checkboxes[6] ? Common.Sensor.CurrentStatus[6].GasConc : 0;
+                _data.sensor[7] = Common.Config.checkboxes[7] ? Common.Sensor.CurrentStatus[7].GasConc : 0;
 
                 DataArray.Add(_data);
 

@@ -255,7 +255,7 @@ namespace APP
         {
             List<byte> receivedatas = new List<byte>();
 
-            foreach (var result in Common.Config.config.checkboxes.Select((p, x) => new { p, x }))
+            foreach (var result in Common.Config.checkboxes.Select((p, x) => new { p, x }))
             {
                 int ch = result.x + 1;
 
