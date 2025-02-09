@@ -92,6 +92,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.checkValid = new System.Windows.Forms.CheckBox();
+            this.buttonFormat = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericW_B3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericW_B0)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -151,7 +153,7 @@
             this.numericW_B3.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.numericW_B3.Location = new System.Drawing.Point(119, 70);
             this.numericW_B3.Maximum = new decimal(new int[] {
-            50000,
+            10000000,
             0,
             0,
             0});
@@ -165,7 +167,7 @@
             this.numericW_B0.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.numericW_B0.Location = new System.Drawing.Point(119, 41);
             this.numericW_B0.Maximum = new decimal(new int[] {
-            50000,
+            10000000,
             0,
             0,
             0});
@@ -334,6 +336,8 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.label16);
+            this.tabPage1.Controls.Add(this.buttonFormat);
             this.tabPage1.Controls.Add(this.buttonSerial);
             this.tabPage1.Controls.Add(this.textSerial);
             this.tabPage1.Controls.Add(this.label8);
@@ -384,7 +388,7 @@
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label8.Location = new System.Drawing.Point(4, 73);
+            this.label8.Location = new System.Drawing.Point(4, 74);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 24);
@@ -737,7 +741,7 @@
             this.numericW_B4.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.numericW_B4.Location = new System.Drawing.Point(119, 156);
             this.numericW_B4.Maximum = new decimal(new int[] {
-            50000,
+            10000000,
             0,
             0,
             0});
@@ -751,7 +755,7 @@
             this.numericW_B5.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.numericW_B5.Location = new System.Drawing.Point(119, 186);
             this.numericW_B5.Maximum = new decimal(new int[] {
-            50000,
+            10000000,
             0,
             0,
             0});
@@ -843,7 +847,7 @@
             this.numericW_B1.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.numericW_B1.Location = new System.Drawing.Point(119, 98);
             this.numericW_B1.Maximum = new decimal(new int[] {
-            50000,
+            10000000,
             0,
             0,
             0});
@@ -857,7 +861,7 @@
             this.numericW_B2.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.numericW_B2.Location = new System.Drawing.Point(119, 127);
             this.numericW_B2.Maximum = new decimal(new int[] {
-            50000,
+            10000000,
             0,
             0,
             0});
@@ -935,6 +939,30 @@
             this.checkValid.Text = "*CH";
             this.checkValid.UseVisualStyleBackColor = false;
             this.checkValid.CheckedChanged += new System.EventHandler(this.valid_CheckedChanged);
+            // 
+            // buttonFormat
+            // 
+            this.buttonFormat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFormat.Font = new System.Drawing.Font("メイリオ", 8F);
+            this.buttonFormat.Location = new System.Drawing.Point(142, 102);
+            this.buttonFormat.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonFormat.Name = "buttonFormat";
+            this.buttonFormat.Size = new System.Drawing.Size(40, 24);
+            this.buttonFormat.TabIndex = 323;
+            this.buttonFormat.Text = "読出";
+            this.buttonFormat.UseVisualStyleBackColor = false;
+            this.buttonFormat.Click += new System.EventHandler(this.buttonFormat_Click);
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label16.Location = new System.Drawing.Point(3, 100);
+            this.label16.Margin = new System.Windows.Forms.Padding(0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(52, 24);
+            this.label16.TabIndex = 324;
+            this.label16.Text = "FMT";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UserControlDevice
             // 
@@ -1030,5 +1058,7 @@
         private System.Windows.Forms.Button buttonSerial;
         private System.Windows.Forms.TextBox textSerial;
         public System.Windows.Forms.CheckBox checkValid;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button buttonFormat;
     }
 }

@@ -176,32 +176,33 @@ namespace APP
 
         private void buttonSet_B0_Click(object sender, EventArgs e)
         {
-            bool ret = SetNdirSensorParam(0x01, 450000);
+            
+            bool ret = SetNdirSensorParam(0x01, (int)numericW_B0.Value);
         }
 
         private void buttonSet_B1_Click(object sender, EventArgs e)
         {
-            bool ret = SetNdirSensorParam(0x02, 200000);
+            bool ret = SetNdirSensorParam(0x02, (int)numericW_B1.Value);
         }
 
         private void buttonSet_B2_Click(object sender, EventArgs e)
         {
-
+            bool ret = SetNdirSensorParam(0x04, (int)numericW_B2.Value);
         }
 
         private void buttonSet_B3_Click(object sender, EventArgs e)
         {
-
+            bool ret = SetNdirSensorParam(0x08, (int)numericW_B3.Value);
         }
 
         private void buttonSet_B4_Click(object sender, EventArgs e)
         {
-
+            bool ret = SetNdirSensorParam(0x10, (int)numericW_B4.Value);
         }
 
         private void buttonSet_B5_Click(object sender, EventArgs e)
         {
-
+            bool ret = SetNdirSensorParam(0x20, (int)numericW_B5.Value);
         }
 
         private bool SetNdirSensorParam(byte flag, Int32 wdata)
@@ -304,6 +305,16 @@ namespace APP
 
             /// Return
             return param;
+        }
+
+        private void buttonFormat_Click(object sender, EventArgs e)
+        {
+            /// 受信処理
+            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサフォーマット取得, CH, null);
+
+            /// 受信パケット解析
+            //var temporary = Common.Sensor.ControlNdirVersion.Parse(receivedatas);
+            //if (temporary == null) return;
         }
     }
 }
