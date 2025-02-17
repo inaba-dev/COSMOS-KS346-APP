@@ -175,56 +175,59 @@ namespace APP
         /// </summary>
 
         private void buttonSet_B0_Click(object sender, EventArgs e)
-        {
-            
+        {            
             bool ret = SetNdirSensorParam(0x01, (int)numericW_B0.Value);
+            if (ret) buttonGet_B0_Click(null, null);
         }
 
         private void buttonSet_B1_Click(object sender, EventArgs e)
         {
             bool ret = SetNdirSensorParam(0x02, (int)numericW_B1.Value);
+            if (ret) buttonGet_B1_Click(null, null);
         }
 
         private void buttonSet_B2_Click(object sender, EventArgs e)
         {
             bool ret = SetNdirSensorParam(0x04, (int)numericW_B2.Value);
+            if (ret) buttonGet_B2_Click(null, null);
         }
 
         private void buttonSet_B3_Click(object sender, EventArgs e)
         {
             bool ret = SetNdirSensorParam(0x08, (int)numericW_B3.Value);
+            if (ret) buttonGet_B3_Click(null, null);
         }
 
         private void buttonSet_B4_Click(object sender, EventArgs e)
         {
             bool ret = SetNdirSensorParam(0x10, (int)numericW_B4.Value);
+            if (ret) buttonGet_B4_Click(null, null);
         }
 
         private void buttonSet_B5_Click(object sender, EventArgs e)
         {
             bool ret = SetNdirSensorParam(0x20, (int)numericW_B5.Value);
+            if (ret) buttonGet_B5_Click(null, null);
         }
 
         private bool SetNdirSensorParam(byte flag, Int32 wdata)
         {
-            //ClassNdirSensorParam param = new ClassNdirSensorParam();
+            ClassNdirSensorParam param = new ClassNdirSensorParam();
 
             byte[] data = Func.Change_4bytes(wdata.ToString());
 
             /// 書込みデータ
             List<byte> writedatas = new List<byte>();
             writedatas.Add(flag);
-            writedatas.Add(data[0]);
-            writedatas.Add(data[1]);
-            writedatas.Add(data[2]);
             writedatas.Add(data[3]);
+            writedatas.Add(data[2]);
+            writedatas.Add(data[1]);
+            writedatas.Add(data[0]);
 
             /// 受信処理
             List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサパラメータ設定, CH, writedatas);
 
-            /// 受信パケット解析
-            //param = Common.Sensor.ControlNdirSensorParam.Parse(receivedatas);
-            //if (param == null) return null;
+            if (receivedatas == null) return false;
 
             /// Return
             return true;

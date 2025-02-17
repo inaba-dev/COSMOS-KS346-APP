@@ -244,9 +244,9 @@ namespace APP
         {
             List<byte> receivedatas = new List<byte>();
 
-            Communication(Command[cmd], ch, writedatas, null, out receivedatas);
+            bool ret = Communication(Command[cmd], ch, writedatas, null, out receivedatas);
 
-            return receivedatas;
+            return ret ? receivedatas : null;
         }
 
         /// <summary>
