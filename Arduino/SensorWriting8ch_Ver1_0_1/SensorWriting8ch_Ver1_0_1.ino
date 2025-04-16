@@ -94,7 +94,6 @@ bool parsePacketSensor()
 {
   // ヘッターの確認
   if (g_recvHostDatas[0] != 0x40) return false;
-//  if (g_recvHostDatas[1] != 0x40) return false;
 
   return true;
 }

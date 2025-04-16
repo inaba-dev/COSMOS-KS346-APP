@@ -393,9 +393,6 @@ namespace APP
             /// 送信パケット生成
             List<byte> packet = Packet.DataPacket_create((byte)cmd, writedatas);
 
-            /// 先頭にダミーパケット追加(センサ仕様で先頭にDummyが必要)
-            //packet.Insert(0, (byte)0xFF);
-
             while (RetryCount < Define.defRetry)
             {
                 //　送信処理
