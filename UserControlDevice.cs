@@ -98,21 +98,22 @@ namespace APP
 
         private void buttonData_Click(object sender, EventArgs e)
         {
-            /// 受信処理
-            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ状態取得, CH, null);
+			/// 受信処理
+			var writeDatas = Control_NdirSensorStatusV2.CreatePacket();
+            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ状態取得, CH, writeDatas);
 
             /// 受信パケット解析
-            ClassNdirSensorStatus CurrentStatus = Common.Sensor.ControlNdirSensorStatus.Parse(receivedatas);
+            var CurrentStatus = Control_NdirSensorStatusV2.Parse(receivedatas);
 
             if (CurrentStatus == null) return;
 
             /// ラベル表示
             textStatus.Text = CurrentStatus.Status.ToString("X2");
-            textAlarm.Text = CurrentStatus.Alarm.ToString("X2");
-            textError.Text = CurrentStatus.Error.ToString("X4");
+            textAlarm.Text = "";
+            textError.Text = CurrentStatus.Error.ToString("X2");
             textGasConc.Text = CurrentStatus.GasConc.ToString();
-            textCount.Text = CurrentStatus.RawCount.ToString();
-            textTemp.Text = CurrentStatus.Temperature.ToString();
+			textCount.Text = "";
+			textTemp.Text = "";
 
             ///
             Common.Sensor.CurrentStatus[CH - 1] = CurrentStatus;
@@ -138,34 +139,67 @@ namespace APP
         private void buttonGas_Click(object sender, EventArgs e)
         {
             /// 受信処理
-            List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ情報取得, CH, null);
+			List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ情報取得, CH, null);
 
-            /// 受信パケット解析
-            var temporary = Common.Sensor.ControlNdirSensorInfo.Parse(receivedatas);
-            if (temporary == null) return;
+			/// 受信パケット解析
+			var temporary = Control_NdirSensorInfoV2.Parse(receivedatas);
+			if(temporary == null) return;
 
             /// ラベル表示
-            textGas.Text = Common.Sensor.ControlNdirSensorInfo.GetGasName(temporary);
-        }
+			textGas.Text = Control_NdirSensorInfoV2.GetGasName(temporary);
+		}
 
-        private void buttonSerial_Click(object sender, EventArgs e)
+		private void buttonSerial_Click(object sender, EventArgs e)
         {
             /// 受信処理
             List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ情報取得, CH, null);
 
             /// 受信パケット解析
-            var temporary = Common.Sensor.ControlNdirSensorInfo.Parse(receivedatas);
+            var temporary = Control_NdirSensorInfoV2.Parse(receivedatas);
             if (temporary == null) return;
 
             /// ラベル表示
             textSerial.Text = temporary.シリアルNo.ToString("X8");
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+		bool isMove = false;
+		private void bChangeMove_Click(object sender, EventArgs e) {
+			if(!isMove) {    // 待機中から動作中へ
+				/// 受信処理
+				var writeDatas = Control_NdirSensorStart.CreatePacket();
+				List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ起動, CH, writeDatas);
 
-        private void valid_CheckedChanged(object sender, EventArgs e)
+				/// 受信パケット解析
+				var CurrentStatus = Control_NdirSensorStart.Parse(receivedatas);
+				if(CurrentStatus == null) return;
+				if(CurrentStatus.Result != 0) return;
+
+				isMove = true;
+				bChangeMove.Text = "動作中";
+				bChangeMove.BackColor = Color.LightGreen;
+
+			} else {        // 動作中から待機中へ
+				/// 受信処理
+				var writeDatas = Control_NdirSensorStop.CreatePacket();
+				List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ待機, CH, writeDatas);
+
+				/// 受信パケット解析
+				var CurrentStatus = Control_NdirSensorStatusV2.Parse(receivedatas);
+				if(CurrentStatus == null) return;
+				if(CurrentStatus.Result != 0) return;
+
+				isMove = false;
+				bChangeMove.Text = "待機中";
+				bChangeMove.BackColor = Color.Transparent;
+
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+
+		private void valid_CheckedChanged(object sender, EventArgs e)
         {
             UpdateEvent(this, EventArgs.Empty);
         }
@@ -319,5 +353,7 @@ namespace APP
             //var temporary = Common.Sensor.ControlNdirVersion.Parse(receivedatas);
             //if (temporary == null) return;
         }
-    }
+
+
+	}
 }

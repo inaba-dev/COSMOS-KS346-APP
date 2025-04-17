@@ -16,7 +16,7 @@ namespace APP
     {
         public ClasssCom Com = new ClasssCom();
 
-        public ClassNdirSensorStatus[] CurrentStatus = new ClassNdirSensorStatus[8];
+        public ClassNdirSensorStatusV2[] CurrentStatus = new ClassNdirSensorStatusV2[8];
 
         private ClassSensorPacket Packet = new ClassSensorPacket();
 
@@ -35,14 +35,14 @@ namespace APP
 
         public void Initialize()
         {
-            CurrentStatus[0] = new ClassNdirSensorStatus();
-            CurrentStatus[1] = new ClassNdirSensorStatus();
-            CurrentStatus[2] = new ClassNdirSensorStatus();
-            CurrentStatus[3] = new ClassNdirSensorStatus();
-            CurrentStatus[4] = new ClassNdirSensorStatus();
-            CurrentStatus[5] = new ClassNdirSensorStatus();
-            CurrentStatus[6] = new ClassNdirSensorStatus();
-            CurrentStatus[7] = new ClassNdirSensorStatus();
+            CurrentStatus[0] = new ClassNdirSensorStatusV2();
+            CurrentStatus[1] = new ClassNdirSensorStatusV2();
+            CurrentStatus[2] = new ClassNdirSensorStatusV2();
+            CurrentStatus[3] = new ClassNdirSensorStatusV2();
+            CurrentStatus[4] = new ClassNdirSensorStatusV2();
+            CurrentStatus[5] = new ClassNdirSensorStatusV2();
+            CurrentStatus[6] = new ClassNdirSensorStatusV2();
+            CurrentStatus[7] = new ClassNdirSensorStatusV2();
         }
 
         /// <summary>
@@ -79,32 +79,36 @@ namespace APP
             NDIRセンサスパン調整要求,
             NDIRセンサスパン調整結果,
             NDIRセンサバージョン取得,
+			NDIRセンサ起動,
+			NDIRセンサ待機,
         };
 
         public static StFunc[] Command = new StFunc[]
         {
-            new StFunc() {code = 0x00, name = "センサ情報取得"},
-            new StFunc() {code = 0x01, name = "センサ情報設定"},
-            new StFunc() {code = 0x02, name = "ガス情報取得"},
-            new StFunc() {code = 0x03, name = "ガス情報設定"},
-            new StFunc() {code = 0x04, name = "ガス調整情報取得"},
-            new StFunc() {code = 0x05, name = "ガス調整情報設定"},
-            new StFunc() {code = 0x0E, name = "警報設定情報取得"},
-            new StFunc() {code = 0x0F, name = "警報設定情報設定"},
-            new StFunc() {code = 0x14, name = "センサ期限情報取得"},
-            new StFunc() {code = 0x16, name = "センサ使用時間取得"},
-            new StFunc() {code = 0x17, name = "センサ使用時間設定"},
-            new StFunc() {code = 0xC4, name = "バージョン取得"},
-            new StFunc() {code = 0x40, name = "NDIRセンサ情報取得"},
-            new StFunc() {code = 0x41, name = "NDIRセンサ状態取得"},
-            new StFunc() {code = 0x42, name = "NDIRセンサフォーマット取得"},
-            new StFunc() {code = 0x43, name = "NDIRセンサパラメータ取得"},
-            new StFunc() {code = 0x44, name = "NDIRセンサパラメータ設定"},
-            new StFunc() {code = 0x45, name = "NDIRセンサゼロ調整要求"},
-            new StFunc() {code = 0x46, name = "NDIRセンサゼロ調整結果"},
-            new StFunc() {code = 0x47, name = "NDIRセンサスパン調整要求"},
-            new StFunc() {code = 0x48, name = "NDIRセンサスパン調整結果"},
-            new StFunc() {code = 0x49, name = "NDIRセンサバージョン取得"},
+            new StFunc() {code = 0x00, name = "センサ情報取得"},				// 0
+            new StFunc() {code = 0x01, name = "センサ情報設定"},				// 1
+            new StFunc() {code = 0x02, name = "ガス情報取得"},					// 2
+            new StFunc() {code = 0x03, name = "ガス情報設定"},					// 3
+            new StFunc() {code = 0x04, name = "ガス調整情報取得"},				// 4
+            new StFunc() {code = 0x05, name = "ガス調整情報設定"},				// 5
+            new StFunc() {code = 0x0E, name = "警報設定情報取得"},				// 6
+            new StFunc() {code = 0x0F, name = "警報設定情報設定"},				// 7
+            new StFunc() {code = 0x14, name = "センサ期限情報取得"},			// 8
+            new StFunc() {code = 0x16, name = "センサ使用時間取得"},			// 9
+            new StFunc() {code = 0x17, name = "センサ使用時間設定"},			// 10
+            new StFunc() {code = 0xC4, name = "バージョン取得"},				// 11
+            new StFunc() {code = 0x30, name = "NDIRセンサ情報取得V2"},			// 12
+            new StFunc() {code = 0x39, name = "NDIRセンサ状態取得"},			// 13
+            new StFunc() {code = 0x42, name = "NDIRセンサフォーマット取得"},	// 14
+            new StFunc() {code = 0x43, name = "NDIRセンサパラメータ取得"},		// 15
+            new StFunc() {code = 0x44, name = "NDIRセンサパラメータ設定"},		// 16
+            new StFunc() {code = 0x45, name = "NDIRセンサゼロ調整要求"},		// 17
+            new StFunc() {code = 0x46, name = "NDIRセンサゼロ調整結果"},		// 18
+            new StFunc() {code = 0x47, name = "NDIRセンサスパン調整要求"},		// 19
+            new StFunc() {code = 0x48, name = "NDIRセンサスパン調整結果"},		// 20
+            new StFunc() {code = 0x49, name = "NDIRセンサバージョン取得"},		// 21
+			new StFunc() {code = 0x10, name = "NDIRセンサ起動" },				// 22
+			new StFunc() {code = 0x11, name = "NDIRセンサ待機" },				// 23
         };
 
         /// <summary>
@@ -398,13 +402,13 @@ namespace APP
                 //　送信処理
                 Common.Sensor.Com.Send(packet.ToArray());
 
-                Thread.Sleep(300);
+                Thread.Sleep(400);
 
                 // 受信処理  
                 if (Common.Sensor.Com.Read(receivedDatas, out int len))
                 {
-                    /// ヘッダーチェック
-                    if (receivedDatas[0] != 0xC0) return null;
+					/// ヘッダーチェック
+					if(receivedDatas[0] != 0xC0) return null;
 
                     /// データ長
                     int length = receivedDatas[1] + 1;

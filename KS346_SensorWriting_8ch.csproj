@@ -57,6 +57,10 @@
   <ItemGroup>
     <Compile Include="ClassCom.cs" />
     <Compile Include="ClassLogger.cs" />
+    <Compile Include="Command\Control_NdirSensorStart.cs" />
+    <Compile Include="Command\Control_NdirSensorStatusV2.cs" />
+    <Compile Include="Command\Control_NdirSensorInfoV2.cs" />
+    <Compile Include="Command\Control_NdirSensorStop.cs" />
     <Compile Include="Command\Control_NdirSpanAdjust.cs" />
     <Compile Include="Command\Control_NdirZeroAdjust.cs" />
     <Compile Include="Command\Control_NdirSensorParam.cs" />

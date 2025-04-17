@@ -13,7 +13,7 @@ namespace APP
     {
         public bool bValid { get; set; }
 
-        public List<ClassNdirSensorStatus> DataBuffer = new List<ClassNdirSensorStatus>();
+        public List<ClassNdirSensorStatusV2> DataBuffer = new List<ClassNdirSensorStatusV2>();
 
         /// 自CH情報
         private int CH = 0;
@@ -90,7 +90,7 @@ namespace APP
         }
 
         /*** データ書込み ***/
-        public void Write(ClassNdirSensorStatus data)
+        public void Write(ClassNdirSensorStatusV2 data)
         {
             if (!bInit || !bValid) return; 
 
@@ -123,11 +123,11 @@ namespace APP
                 ///書込みデータ生成
                 str +=
                 TimeStamp + "," +
-                buff.RawCount + "," +
+                "0" + "," +
                 buff.GasConc + "," +
-                buff.Temperature + "," + 
+                "0" + "," + 
                 "0x" + buff.Status.ToString("X2") + "," +
-                "0x" + buff.Alarm.ToString("X2") + "," +
+                "0x00" + "," +
                 "0x" + buff.Error.ToString("X4") + "\n";
             }
 

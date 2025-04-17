@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.IO.Ports;
+using System.Linq;
 
 namespace APP
 {

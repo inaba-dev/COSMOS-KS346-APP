@@ -20,7 +20,7 @@ namespace APP
 
         private class DataClass
         {
-            public UInt32[] sensor = new UInt32[8];
+            public int[] sensor = new int[8];
         }
 
         public UserControlChart()
@@ -47,7 +47,7 @@ namespace APP
 
             DataClass data = new DataClass();
 
-            data.sensor = (Enumerable.Range(0, 8).Select(x => (UInt32)0).ToArray());
+            data.sensor = (Enumerable.Range(0, 8).Select(x => 0).ToArray());
 
             for (int i = 0; i < DEF_CHART_POINT; i++)
             {
@@ -83,7 +83,7 @@ namespace APP
                 _data.sensor[5] = Common.Config.checkboxes[5] ? Common.Sensor.CurrentStatus[5].GasConc : 0;
                 _data.sensor[6] = Common.Config.checkboxes[6] ? Common.Sensor.CurrentStatus[6].GasConc : 0;
                 _data.sensor[7] = Common.Config.checkboxes[7] ? Common.Sensor.CurrentStatus[7].GasConc : 0;
-
+					
                 DataArray.Add(_data);
 
                 ///グラフクリア
