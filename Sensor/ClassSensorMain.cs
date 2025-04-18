@@ -71,7 +71,7 @@ namespace APP
             バージョン取得,
             NDIRセンサ情報取得,
             NDIRセンサ状態取得,
-            NDIRセンサフォーマット取得,
+           // NDIRセンサフォーマット取得,
             NDIRセンサパラメータ取得,
             NDIRセンサパラメータ設定,
             NDIRセンサゼロ調整要求,
@@ -79,9 +79,14 @@ namespace APP
             NDIRセンサスパン調整要求,
             NDIRセンサスパン調整結果,
             NDIRセンサバージョン取得,
+			NDIRガス調整情報取得,
+			NDIRガス調整情報設定,
 			NDIRセンサ起動,
 			NDIRセンサ待機,
-        };
+			NDIRセンサ校正開始,
+			NDIRセンサ校正状態取得,
+			NDIRセンサ校正中断,
+		};
 
         public static StFunc[] Command = new StFunc[]
         {
@@ -99,7 +104,7 @@ namespace APP
             new StFunc() {code = 0xC4, name = "バージョン取得"},				// 11
             new StFunc() {code = 0x30, name = "NDIRセンサ情報取得V2"},			// 12
             new StFunc() {code = 0x39, name = "NDIRセンサ状態取得"},			// 13
-            new StFunc() {code = 0x42, name = "NDIRセンサフォーマット取得"},	// 14
+            //new StFunc() {code = 0x42, name = "NDIRセンサフォーマット取得"},	// 14
             new StFunc() {code = 0x43, name = "NDIRセンサパラメータ取得"},		// 15
             new StFunc() {code = 0x44, name = "NDIRセンサパラメータ設定"},		// 16
             new StFunc() {code = 0x45, name = "NDIRセンサゼロ調整要求"},		// 17
@@ -107,8 +112,14 @@ namespace APP
             new StFunc() {code = 0x47, name = "NDIRセンサスパン調整要求"},		// 19
             new StFunc() {code = 0x48, name = "NDIRセンサスパン調整結果"},		// 20
             new StFunc() {code = 0x49, name = "NDIRセンサバージョン取得"},		// 21
-			new StFunc() {code = 0x10, name = "NDIRセンサ起動" },				// 22
-			new StFunc() {code = 0x11, name = "NDIRセンサ待機" },				// 23
+
+			new StFunc() {code = 0x04, name = "NDIRガス調整情報取得" },			// 22
+			new StFunc() {code = 0x05, name = "NDIRガス調整情報設定" },			// 23
+			new StFunc() {code = 0x10, name = "NDIRセンサ起動" },				// 24
+			new StFunc() {code = 0x11, name = "NDIRセンサ待機" },				// 25
+			new StFunc() {code = 0x40, name = "NDIRセンサ校正開始" },			// 26
+			new StFunc() {code = 0x42, name = "NDIRセンサ校正状態取得" },		// 27
+			new StFunc() {code = 0x41, name = "NDIRセンサ校正中断" },			// 28
         };
 
         /// <summary>
@@ -408,7 +419,12 @@ namespace APP
                 if (Common.Sensor.Com.Read(receivedDatas, out int len))
                 {
 					/// ヘッダーチェック
-					if(receivedDatas[0] != 0xC0) return null;
+					int pos;
+					for(pos=0; pos<receivedDatas.Length;pos++) {
+						if(receivedDatas[pos] == 0xC0) break;
+					}
+					if(pos == receivedDatas.Length) return null;
+					receivedDatas = receivedDatas.Skip(pos).ToArray();
 
                     /// データ長
                     int length = receivedDatas[1] + 1;

@@ -24,6 +24,8 @@ namespace APP
         {
             try
             {
+                if (this.comboBox_COM.SelectedIndex == -1) return "";
+
                 return this.comboBox_COM.SelectedItem.ToString();
             }
             catch

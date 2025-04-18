@@ -17,13 +17,23 @@ namespace APP {
 	}
 
 	static public class Control_NdirSensorStatusV2 {
-		static bool b = false;
+
+		static public ClassNdirSensorStatusV2 Get(int ch, int rtry = 1) {
+			while(rtry-- > 0) {
+				/// 受信処理
+				var writeDatas = CreatePacket();
+				List<byte> receivedatas = Common.Sensor.Exec((byte)ClassSensorMain.FuncCode.NDIRセンサ状態取得, ch, writeDatas);
+
+				/// 受信パケット解析
+				var rcv = Parse(receivedatas);
+				if(rcv != null) return rcv;
+			}
+			return null;
+		}
 
 		static public ClassNdirSensorStatusV2 Parse(List<byte> dataList) {
 			if(dataList == null || dataList.Count < 10 ) return null;			// 最低値保障
 			var datas = dataList.Skip(4).ToArray();         // 4から実データ
-
-			b = !b;
 
 			return new ClassNdirSensorStatusV2() {
 				Result = datas[0],

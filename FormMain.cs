@@ -225,4 +225,15 @@ namespace APP
             RunTime();
         }
     }
+
+	static public class Extensions {
+		public static void SetInvoke(this Control c, Action act) {
+			if(c.InvokeRequired) {
+				c.Invoke((MethodInvoker)(() => act()));
+			} else {
+				act();
+			}
+		}
+	}
+
 }

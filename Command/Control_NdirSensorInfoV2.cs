@@ -19,8 +19,6 @@ namespace APP {
 	}
 
 	static class Control_NdirSensorInfoV2 {
-
-
 		static public string GetGasName(ClassNdirSensorInfoV2 param) {
 			switch(param.センサ種) {
 			case (byte)0x00: return ("未定義");

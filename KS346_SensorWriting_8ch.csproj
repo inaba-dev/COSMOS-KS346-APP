@@ -57,6 +57,10 @@
   <ItemGroup>
     <Compile Include="ClassCom.cs" />
     <Compile Include="ClassLogger.cs" />
+    <Compile Include="Command\Control_NdirCalibStart.cs" />
+    <Compile Include="Command\Control_NdirCalibStatus.cs" />
+    <Compile Include="Command\Control_NdirCalibStop.cs" />
+    <Compile Include="Command\Control_NdirGasCalibInfo.cs" />
     <Compile Include="Command\Control_NdirSensorStart.cs" />
     <Compile Include="Command\Control_NdirSensorStatusV2.cs" />
     <Compile Include="Command\Control_NdirSensorInfoV2.cs" />

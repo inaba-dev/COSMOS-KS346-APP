@@ -24,6 +24,8 @@ namespace APP
 
         public bool Open(string portName, int baudRate, int readSize)
         {
+            if(portName == "") return false;
+
             serial.PortName = portName;
             serial.BaudRate = baudRate;          //転送速度を設定するパラメータ
             serial.Parity = Parity.None;          //パリティチェックは行わない

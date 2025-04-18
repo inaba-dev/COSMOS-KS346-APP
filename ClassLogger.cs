@@ -53,6 +53,9 @@ namespace APP
 
             if (!bValid) return true;
 
+            ///
+            if (!File.Exists(path)) return false;
+
             ///出力ファイルパス
             filepath = "";
             filepath += path + @"\";
